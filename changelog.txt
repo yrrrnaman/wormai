@@ -1,0 +1,116 @@
+WormAI Changelog
+================
+
+Version 11, 2026-02-03
+  + Fix: division by zero in SuperLib.GetInflationRate.
+
+Version 10, 2024-02-13
+---------------------
+  + Fix: crash when there is no mail cargo.
+
+Version 9, 2023-03-20
+---------------------
+  + Fix: divide by zero when production is zero.
+  + Doxygen documentation improvements.
+  + Use https links.
+  + Use python3 for making releases.
+
+Version 8, 2019-09-19
+---------------------
++ Fix: Determination of 90 degree turn in rail pathfinder was wrong causing
+  rollercoaster tracks and difficulties finding a path.
++ Fix: Remove rail tracks by using RemoveRailTrack as much as possible since
+  that is cheaper than using DemolishTile which makes it less likely that we
+  run out of money early in the game with a failed train route.
++ Fix: Not building airports in spots where the noise level will equal the
+  maximum allowed noise level.
++ Fix: Take station spread setting into account when determining best
+  airport type.
++ Add: Manage over saturated air routes by either removing planes from route
+  or upgrading airports.
++ Add: Upgrade airports to International airports in certain cases.
++ Add: Regular checks that industries we use on a rail route are still
+  accepting/producing our cargo. If not we will sell the vehicles and
+  close the route.
++ Add: Extra pathfinding penalties to make it less likely the pathfinder
+  continues a path far away from our destination.
++ Change: Improve finding airport spots adding towns to blacklist more
+  often and only checking towns within distance limits.
++ Change: Adjust max aircraft route distance in early starting games
+  depending on plane speed and reliability.
++ Change: Rail: Increase length of train routes if we have enough money.
++ Change: Lower minimum town for airport size in easy setting from 2500
+  to 1500.
++ Change: Use Graph.AyStar version 6 instead of version 4.
++ Change: Moved repository and issue tracker to Github.
+
+Version 7, 2017-04-16
+---------------------
++ Fix: Not checking air route range at startup under certain conditions.
++ Change: Adjust maximum distance for air routes when we have limited money.
++ Change: Adjust airCraft selection when we have limited funds and high prices
+  of longer range aircraft.
+
+Version 6, 2016-05-28
+---------------------
++ Fix: Crash when loading a savegame saved when building a rail route or
+  when replacing trains.
++ Fix: Crash when we get loaded into a savegame without getting any saved data.
++ Fix: We need to make sure we have at least some money to build a rail route.
++ Fix: Make sure that the vehicle we share orders with is valid.
++ Fix: 90 degree turns near a passing lane.
++ Fix: border of map starts at 1,1 not 0,0. (We were not building airports
+  in towns near the left and upper borders.)
++ Change: more checks before building a passing lane, we should see less land
+  is sloped wrong messages.
++ Change: Improved airport upgrading.
++ Change: Better handling of airplane NewGRF's that have high prices.
++ Change: Rail pathfinding tweaks.
++ Change: Don't cancel and remove routes just because we don't have money for
+  vehicles. Just add them later when we do have the money.
++ Change: Don't use airplanes that are hardly profitable.
++ Change: Blacklist airports that we failed to upgrade for a while.
+
+Version 5, 2016-05-14
+---------------------
++ Add: Train support. Based on SimpleAI but with changes and more to come.
++ Change: Take inflation into account.
++ Change: blacklist towns where we failed to build an airport for a while.
++ Change: Don't remove airports we just built if we don't have money
+  to buy the airplanes. We build them later when we have the money.
++ Change: Don't waste time trying to upgrade airport if there's too much noise.
+
+Version 4, 2016-04-30
+---------------------
++ Fix: Airplanes could get stuck when an airport upgrade failed.
++ Fix: After loading a savegame that had airplanes stopped in depot
+  to be sold WormAI didn't know about them being in depot and
+  tried to send them to depot again which failed causing them
+  to not be sold.
++ Add: Build HeadQuarters (normal or fast setting).
++ Add: Build Statues in towns with an airport (fast setting only).
++ Change: Updated SuperLib to latest version (39).
+
+Version 3, 2015-06-12
+---------------------
++ Add basic support for upgrading airports.
++ Fix: Don't use large aircraft on small airports.
++ Fix: Don't crash when there isn't a best engine at all.
++ Change: Don't add more airplanes to a route when there are
+  too many planes waiting in the landing queue.
++ Change how we are starting tasks. Do it monthly/yearly instead
+  of based on a tick count.
++ Some changes in the min/max and default values of some settings.
++ Increased required OpenTTD version to 1.4.
+
+Version 2, 2013-08-02
+---------------------
++ Add support for vehicle breakdowns by adding depot maintenance orders.
++ Add vehicle management: send old vehicles to depot and sell once a month.
++ Fix: Incorrect tile rectangle near map borders.
+
+Version 1, released 2013-07-26
+------------------------------
++ First release, based on WrightAI.
++ Pax aircraft only.
++ Save and load support.
